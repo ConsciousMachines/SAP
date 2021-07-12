@@ -6,18 +6,18 @@ my interpretations of SAP from Albert Paul Malvino's digital design textbook. So
 
 here is a program:
 ```
-    jz
+    jz      ; the ALU starts at 0 so we jump
     d
 d:
-    inr a
+    inr a   ; increment A, ALU becomes 1, we jump again
     jnz
     2
 2: 
-    dcr a
+    dcr a   ; A becomes 0, we jump again
     jz
     b
 b:
-    inr a
+    inr a   ; last line
 ```
 
 ![alt text](https://github.com/ConsciousMachines/SAP/blob/main/Screenshot%20(96).png)
