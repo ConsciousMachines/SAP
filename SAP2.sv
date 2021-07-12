@@ -19,23 +19,10 @@
 // I/O pins are either Input or Output depending on the Enable / Load signal inside. it is connected to both the chip's input + output.
 // control signals load, enable, and prepare registers for the next positive clock edge. 
 // - it takes 2 clocks for a memory fetch: 1 clock for MAR to fall thru to MDR, and one clock for MDR to fall thru to another reg.
-
 // I didnt include an Lf bit which allows only certain instructions to affect the flags p.187 
 
+
 /*
-LDA: the official LDA takes 13 T-states and 3 bytes. It'd be 3A followed by 2 bytes of the address. BUT - 
-    T4 will be to load PC into MAR. T5 is increment PC. T6 is enable MDR and load into a_reg. 
-    T7 will be to load PC into MAR. T8 is increment PC. T9 is enable MDR and load into t_reg.
-    OK they really don't provide enough info. Either PC can shift and AND what's on the bus to get an address from 2 regs. 
-    or the ALU is 16 bits. 
-
----- M Y   M I C R O C O D E
-LDA - T4: enable PC, load MAR. T5: increment PC. T6: enable MDR, load MAR. T7: enable MDR, load A.  
-MVI X, byte - same as Fetch except load into a_reg instead of i_reg, also reset ring_counter on the last step
-MOV X, Y - enable A, load B
-NOP - reset ring counter
-
-
 ---- M Y   S I G N A L S
 E~ - enable register to output to bus
 L~ - load data into register from bus
@@ -51,29 +38,7 @@ JM, JNZ, JZ - these signals will be sent alone. for example, JZ is sent. if Z_fl
     so we continue to the other 3 microinstructions which are the same as those of JMP. If Z_flag is 0, we reset the ring_counter
     and it acts as a short circuit to a NOP. 
 
-bonus mux'd alu operations:
-and, or, xor, ral, rar, dcr, inr, cma, 
-jump signals:
-jm, jnz, jz, 
-other:
-hlt, 
-
-hlt, jm, jnz, jz, and, or, xor, ral, rar, dcr, inr, cma, 
-
-OTHER 
-call, ret, in, out, 
-
-
 */
-
-
-
-// TODO: REDESIGN ON DAY 2:
-// -> make sure we don't overwrite registers B, C during operations. 
-// -> how can INR / DCR A, B, C all take 1 clock? more mux options?
-//      how about TMP takes either a/t/b/c_reg, and a takes either a_reg or 1?
-//      feed a/b/c/t into alu1 (for INR/DCR), and b/c/t/1 into alu2 (for ADD, etc)
-
 
 
 // new signals: 
@@ -82,10 +47,6 @@ call, ret, in, out,
 // And, Or, Xor, Ral, Rar, Cma, Su - arithmetic and logic 7
 // Ep, Emdr, Etmp, Eu, Ec, Eb, Ea - enables 7 
 // Lmar, Lmdr, Lp, Li, Lt, Lc, Lb, La - loads 8
-
-
-
-
 
 
 module address_ROM(
