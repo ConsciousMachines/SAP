@@ -10,6 +10,8 @@ I read 4 books on digital design:
 
 Together, these books give me a good enough idea of what is going on underneath, to the point I can approximate how many cycles a line of code will take. 
 
+Most importantly, I learned what `C` constructs such as loops, conditional statements, and function calls look like in assembly, and how they are processed by the pipeline, which helps with writing performant code.  
+
 # Pipelined Processor with Interrupts
 
 After understanding pipelined processors, the concept of *interrupts* has shown me that it is responsible for a lot of the `magic` that computers seem to do, such as multi-tasking, interfacing with the physical world, and running operating systems. At this point I felt there are no more secrets to uncover about hardware, and I can return to studying Deep Learning. 
