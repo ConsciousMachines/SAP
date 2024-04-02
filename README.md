@@ -2,7 +2,7 @@
 
 My journey into computer engineering started when, as a *Data Science Professional*, I realized I have no idea what happens when I press enter in the Python interpreter to train my fancy deep learning model. At that point I started researching how everything works under the hood: programming languages, interpreters, compilers, operating systems, which eventually led me to the lowest level of all, the hardware. 
 
-I read 3 books on digital design: 
+I read 4 books on digital design: 
 - `Digital Computer Electronics` by Albert Paul Malvino because it discusses a simple CPU from decades ago, when things were so simple that a single human can understand everything on a chip.
 - `Digital Design and Computer Architecture` by Harris & Harris because it provides Verilog code together with the circuits for a pipelined CPU.
 - `Computer Principles and Design in Verilog HDL` by Yamin Li, because it continues where Harris left off, and adds features like interrupts, floating point units, multi-threading, and multi-core processors to the Verilog code. 
